@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyMate — Savings</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="savings.css" />
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">💰</div>
+      <div>
+        <div class="logo-text">MoneyMate</div>
+        <div class="logo-sub">Personal Finance</div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
+      <a href="transactions.html" class="nav-link"><span class="nav-icon">💰</span><span class="nav-label">Transactions</span></a>
+      <a href="savings.html"      class="nav-link"><span class="nav-icon">💵</span><span class="nav-label">Savings</span></a>
+      <a href="assets.html"       class="nav-link"><span class="nav-icon">🏦</span><span class="nav-label">Assets</span></a>
+      <a href="budget.html"       class="nav-link"><span class="nav-icon">📊</span><span class="nav-label">Budget</span></a>
+      <a href="history.html"      class="nav-link"><span class="nav-icon">📜</span><span class="nav-label">Money History</span></a>
+    </nav>
+    <div class="sidebar-footer">MoneyMate v1.0 &nbsp;·&nbsp; All data local</div>
+  </aside>
+  <div id="sidebarOverlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <div class="header-title">Savings Goals</div>
+          <div class="header-subtitle">Track your financial targets</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-primary" id="addGoalBtn">+ Add Goal</button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="sav-summary-bar" id="savSummary"></div>
+      <div class="goals-grid" id="goalsGrid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Goal Modal -->
+<div class="modal-overlay" id="goalModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="goalModalTitle">Add Savings Goal</div>
+      <button class="modal-close" id="goalModalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editGoalId" />
+      <div class="form-group">
+        <label class="form-label">Goal Name *</label>
+        <input type="text" class="form-input" id="goalName" placeholder="e.g. Emergency Fund, New Laptop…" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Target Amount (₹) *</label>
+          <input type="number" class="form-input" id="goalTarget" placeholder="0" min="1" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Currently Saved (₹)</label>
+          <input type="number" class="form-input" id="goalCurrent" placeholder="0" min="0" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="goalDesc" placeholder="What is this goal for?"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="goalCancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="saveGoalBtn">Save Goal</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add / Remove Money Modal -->
+<div class="modal-overlay" id="moneyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="moneyModalTitle">Add Money</div>
+      <button class="modal-close" id="moneyModalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="moneyGoalId" />
+      <input type="hidden" id="moneyAction" value="add" />
+      <div class="form-group">
+        <label class="form-label">Amount (₹) *</label>
+        <input type="number" class="form-input" id="moneyAmount" placeholder="0" min="1" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="moneyCancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="saveMoneyBtn">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="savings.js"></script>
+</body>
+</html>

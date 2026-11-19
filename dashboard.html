@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyMate — Dashboard</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">💰</div>
+      <div>
+        <div class="logo-text">MoneyMate</div>
+        <div class="logo-sub">Personal Finance</div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
+      <a href="transactions.html" class="nav-link"><span class="nav-icon">💰</span><span class="nav-label">Transactions</span></a>
+      <a href="savings.html"      class="nav-link"><span class="nav-icon">💵</span><span class="nav-label">Savings</span></a>
+      <a href="assets.html"       class="nav-link"><span class="nav-icon">🏦</span><span class="nav-label">Assets</span></a>
+      <a href="budget.html"       class="nav-link"><span class="nav-icon">📊</span><span class="nav-label">Budget</span></a>
+      <a href="history.html"      class="nav-link"><span class="nav-icon">📜</span><span class="nav-label">Money History</span></a>
+    </nav>
+    <div class="sidebar-footer">MoneyMate v1.0 &nbsp;·&nbsp; All data local</div>
+  </aside>
+  <div id="sidebarOverlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <div class="header-title">Dashboard</div>
+          <div class="header-subtitle">Your financial overview</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-date" id="headerDate"></div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Net Worth Banner -->
+      <div class="networth-banner">
+        <div class="nw-left">
+          <div class="nw-label">💎 Net Worth</div>
+          <div class="nw-value" id="netWorthVal">₹0</div>
+          <div class="nw-sub" id="netWorthSub">Total Assets + Balance</div>
+        </div>
+        <div class="nw-right">
+          <span class="nw-badge">Live</span>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-icon">💳</div>
+          <div class="stat-label">Balance</div>
+          <div class="stat-value" id="statBalance">₹0</div>
+          <div class="stat-change">Income − Expenses − Savings</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">📈</div>
+          <div class="stat-label">Total Income</div>
+          <div class="stat-value positive" id="statIncome">₹0</div>
+          <div class="stat-change" id="incomeCount">0 transactions</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">📉</div>
+          <div class="stat-label">Total Expenses</div>
+          <div class="stat-value negative" id="statExpenses">₹0</div>
+          <div class="stat-change" id="expenseCount">0 transactions</div>
+        </div>
+        <div class="stat-card cyan">
+          <div class="stat-icon">🏦</div>
+          <div class="stat-label">Total Savings</div>
+          <div class="stat-value" style="color:var(--cyan)" id="statSavings">₹0</div>
+          <div class="stat-change" id="savingCount">0 transactions</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-label">Total Assets</div>
+          <div class="stat-value" style="color:var(--yellow)" id="statAssets">₹0</div>
+          <div class="stat-change" id="assetCount">0 assets</div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-label">Savings Goals</div>
+          <div class="stat-value" style="color:var(--purple)" id="statGoals">0</div>
+          <div class="stat-change" id="goalsProgress">Active goals</div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions + Spending Summary -->
+      <div class="dash-row">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="card-title-icon">🕒</span> Recent Transactions</div>
+            <a href="transactions.html" class="btn btn-secondary btn-sm">View All</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th class="text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="recentTxBody">
+                <tr><td colspan="5" class="text-center text-muted" style="padding:24px">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="card-title-icon">🥧</span> Spending Summary</div>
+            <span class="text-muted" style="font-size:12px">This month</span>
+          </div>
+          <div id="spendingSummary"></div>
+        </div>
+      </div>
+
+      <!-- Budget Overview + Savings Progress -->
+      <div class="dash-row-equal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="card-title-icon">📊</span> Budget Overview</div>
+            <a href="budget.html" class="btn btn-secondary btn-sm">Manage</a>
+          </div>
+          <div id="budgetOverview"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="card-title-icon">🎯</span> Savings Progress</div>
+            <a href="savings.html" class="btn btn-secondary btn-sm">View Goals</a>
+          </div>
+          <div id="savingsProgress"></div>
+        </div>
+      </div>
+
+      <!-- Asset Summary -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><span class="card-title-icon">🏦</span> Asset Summary</div>
+          <a href="assets.html" class="btn btn-secondary btn-sm">Manage</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Asset Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th class="text-right">Value</th>
+              </tr>
+            </thead>
+            <tbody id="assetSummaryBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

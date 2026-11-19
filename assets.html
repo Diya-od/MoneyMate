@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyMate — Assets</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="assets.css" />
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">💰</div>
+      <div>
+        <div class="logo-text">MoneyMate</div>
+        <div class="logo-sub">Personal Finance</div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
+      <a href="transactions.html" class="nav-link"><span class="nav-icon">💰</span><span class="nav-label">Transactions</span></a>
+      <a href="savings.html"      class="nav-link"><span class="nav-icon">💵</span><span class="nav-label">Savings</span></a>
+      <a href="assets.html"       class="nav-link"><span class="nav-icon">🏦</span><span class="nav-label">Assets</span></a>
+      <a href="budget.html"       class="nav-link"><span class="nav-icon">📊</span><span class="nav-label">Budget</span></a>
+      <a href="history.html"      class="nav-link"><span class="nav-icon">📜</span><span class="nav-label">Money History</span></a>
+    </nav>
+    <div class="sidebar-footer">MoneyMate v1.0 &nbsp;·&nbsp; All data local</div>
+  </aside>
+  <div id="sidebarOverlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <div class="header-title">Assets</div>
+          <div class="header-subtitle">Track your personal assets &amp; net worth</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-primary" id="addAssetBtn">+ Add Asset</button>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <div class="asset-summary-bar" id="assetSummary"></div>
+
+      <div class="asset-filter-bar">
+        <div class="search-wrap">
+          <span class="si">🔍</span>
+          <input type="text" class="form-input" id="assetSearch" placeholder="Search assets…" />
+        </div>
+        <select class="form-select" id="assetTypeFilter" style="min-width:160px">
+          <option value="">All Types</option>
+          <option value="cash">Cash</option>
+          <option value="bank">Bank Account</option>
+          <option value="gold">Gold</option>
+          <option value="property">Property</option>
+          <option value="land">Land</option>
+          <option value="investment">Investment</option>
+          <option value="fd">Fixed Deposit</option>
+          <option value="vehicle">Vehicle</option>
+          <option value="electronics">Electronics</option>
+          <option value="other">Other</option>
+        </select>
+        <button class="btn btn-secondary" id="clearAssetFilter">Clear</button>
+      </div>
+
+      <div class="assets-grid" id="assetsGrid"></div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Asset Modal -->
+<div class="modal-overlay" id="assetModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="assetModalTitle">Add Asset</div>
+      <button class="modal-close" id="assetModalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editAssetId" />
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Asset Name *</label>
+          <input type="text" class="form-input" id="assetName" placeholder="e.g. Gold Jewellery, HDFC Savings…" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Asset Type *</label>
+          <select class="form-select" id="assetType">
+            <option value="cash">💵 Cash</option>
+            <option value="bank">🏦 Bank Account</option>
+            <option value="gold">🥇 Gold</option>
+            <option value="property">🏠 Property</option>
+            <option value="land">🌍 Land</option>
+            <option value="investment">📈 Investment</option>
+            <option value="fd">📋 Fixed Deposit</option>
+            <option value="vehicle">🚗 Vehicle</option>
+            <option value="electronics">💻 Electronics</option>
+            <option value="other">💡 Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Current Value (₹) *</label>
+          <input type="number" class="form-input" id="assetValue" placeholder="0" min="0" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date Added</label>
+          <input type="date" class="form-input" id="assetDate" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="assetDesc" placeholder="Additional details about this asset…"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="assetCancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="saveAssetBtn">Save Asset</button>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="assets.js"></script>
+</body>
+</html>

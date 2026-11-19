@@ -1,0 +1,72 @@
+/* ============================================================
+   budget.css — Styles for Budget page
+   Depends on: shared.css (loaded first)
+   ============================================================ */
+
+/* Summary bar */
+.budget-summary-bar {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.bud-chip {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px 22px;
+  flex: 1; min-width: 150px; text-align: center;
+}
+.bud-chip-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; }
+.bud-chip-value { font-size: 22px; font-weight: 800; margin-top: 5px; }
+
+/* Budget list container */
+.budget-list { display: flex; flex-direction: column; gap: 14px; }
+
+/* Individual budget item */
+.budget-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  transition: box-shadow var(--transition);
+}
+.budget-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,.3); }
+
+.budget-item-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.budget-cat-info { display: flex; align-items: center; gap: 12px; }
+.budget-cat-icon { font-size: 24px; }
+.budget-cat-name { font-size: 16px; font-weight: 700; }
+
+.budget-amount-info { text-align: right; }
+.budget-spent-val {
+  font-size: 20px; font-weight: 800;
+}
+.budget-spent-val.safe    { color: var(--text); }
+.budget-spent-val.warn    { color: var(--yellow); }
+.budget-spent-val.over    { color: var(--red); }
+.budget-limit-val { font-size: 13px; color: var(--text3); margin-top: 2px; }
+
+.budget-stats-row {
+  display: flex; justify-content: space-between;
+  font-size: 12px; margin-bottom: 8px;
+}
+.budget-pct-used { color: var(--text3); }
+.budget-remaining-val       { font-weight: 600; }
+.budget-remaining-val.ok    { color: var(--green); }
+.budget-remaining-val.warn  { color: var(--yellow); }
+.budget-remaining-val.over  { color: var(--red); }
+
+.budget-warning-msg {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; margin-top: 8px; padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+.budget-warning-msg.danger  { background: rgba(239,68,68,.08); color: var(--red); }
+.budget-warning-msg.caution { background: rgba(245,158,11,.08); color: var(--yellow); }
+
+/* No budget empty */
+.budget-empty {
+  text-align: center; padding: 60px 20px;
+}
+.budget-empty .be-icon  { font-size: 52px; margin-bottom: 14px; }
+.budget-empty .be-title { font-size: 17px; font-weight: 700; color: var(--text2); margin-bottom: 6px; }
+.budget-empty .be-desc  { font-size: 14px; color: var(--text3); }

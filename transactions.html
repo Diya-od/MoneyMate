@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyMate — Transactions</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="transactions.css" />
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">💰</div>
+      <div>
+        <div class="logo-text">MoneyMate</div>
+        <div class="logo-sub">Personal Finance</div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
+      <a href="transactions.html" class="nav-link"><span class="nav-icon">💰</span><span class="nav-label">Transactions</span></a>
+      <a href="savings.html"      class="nav-link"><span class="nav-icon">💵</span><span class="nav-label">Savings</span></a>
+      <a href="assets.html"       class="nav-link"><span class="nav-icon">🏦</span><span class="nav-label">Assets</span></a>
+      <a href="budget.html"       class="nav-link"><span class="nav-icon">📊</span><span class="nav-label">Budget</span></a>
+      <a href="history.html"      class="nav-link"><span class="nav-icon">📜</span><span class="nav-label">Money History</span></a>
+    </nav>
+    <div class="sidebar-footer">MoneyMate v1.0 &nbsp;·&nbsp; All data local</div>
+  </aside>
+  <div id="sidebarOverlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <div class="header-title">Transactions</div>
+          <div class="header-subtitle">Track your income, expenses &amp; savings</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-primary" id="addTxBtn">+ Add Transaction</button>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <div class="tx-summary-bar" id="txSummaryChips"></div>
+
+      <!-- Filter bar -->
+      <div class="tx-filter-bar">
+        <div class="search-wrap">
+          <span class="si">🔍</span>
+          <input type="text" class="form-input" id="searchInput" placeholder="Search description, category…" />
+        </div>
+        <select class="form-select" id="filterType" style="min-width:140px">
+          <option value="">All Types</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+          <option value="saving">Saving</option>
+        </select>
+        <select class="form-select" id="filterCat" style="min-width:150px">
+          <option value="">All Categories</option>
+          <option value="food">Food</option>
+          <option value="shopping">Shopping</option>
+          <option value="transport">Transport</option>
+          <option value="bills">Bills</option>
+          <option value="education">Education</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="health">Health</option>
+          <option value="travel">Travel</option>
+          <option value="salary">Salary</option>
+          <option value="business">Business</option>
+          <option value="investment">Investment</option>
+          <option value="other">Other</option>
+        </select>
+        <button class="btn btn-secondary" id="clearFilterBtn">Clear</button>
+      </div>
+
+      <!-- Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><span class="card-title-icon">💳</span> All Transactions</div>
+          <span class="text-muted" id="txCount">0 records</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Method</th>
+                <th>Date</th>
+                <th class="text-right">Amount</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="txTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Modal -->
+<div class="modal-overlay" id="txModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Add Transaction</div>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="type-tabs" id="typeTabs">
+        <button class="type-tab" data-type="income">📈 Income</button>
+        <button class="type-tab" data-type="expense">📉 Expense</button>
+        <button class="type-tab" data-type="saving">🏦 Saving</button>
+      </div>
+      <input type="hidden" id="txType" value="expense" />
+      <input type="hidden" id="editTxId" value="" />
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Amount (₹) *</label>
+          <input type="number" class="form-input" id="txAmount" placeholder="0.00" min="0" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date *</label>
+          <input type="date" class="form-input" id="txDate" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Category *</label>
+          <select class="form-select" id="txCategory">
+            <option value="food">🍔 Food</option>
+            <option value="shopping">🛍️ Shopping</option>
+            <option value="transport">🚗 Transport</option>
+            <option value="bills">📄 Bills</option>
+            <option value="education">📚 Education</option>
+            <option value="entertainment">🎬 Entertainment</option>
+            <option value="health">❤️ Health</option>
+            <option value="travel">✈️ Travel</option>
+            <option value="salary">💼 Salary</option>
+            <option value="business">🏢 Business</option>
+            <option value="investment">📈 Investment</option>
+            <option value="other">💡 Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <select class="form-select" id="txMethod">
+            <option value="cash">💵 Cash</option>
+            <option value="upi">📱 UPI</option>
+            <option value="bank transfer">🏦 Bank Transfer</option>
+            <option value="credit card">💳 Credit Card</option>
+            <option value="debit card">💳 Debit Card</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <input type="text" class="form-input" id="txDesc" placeholder="e.g. Monthly Salary, Grocery shopping…" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="modalCancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="saveTxBtn">Save Transaction</button>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="transactions.js"></script>
+</body>
+</html>

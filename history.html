@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyMate — Money History</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="history.css" />
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">💰</div>
+      <div>
+        <div class="logo-text">MoneyMate</div>
+        <div class="logo-sub">Personal Finance</div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
+      <a href="transactions.html" class="nav-link"><span class="nav-icon">💰</span><span class="nav-label">Transactions</span></a>
+      <a href="savings.html"      class="nav-link"><span class="nav-icon">💵</span><span class="nav-label">Savings</span></a>
+      <a href="assets.html"       class="nav-link"><span class="nav-icon">🏦</span><span class="nav-label">Assets</span></a>
+      <a href="budget.html"       class="nav-link"><span class="nav-icon">📊</span><span class="nav-label">Budget</span></a>
+      <a href="history.html"      class="nav-link"><span class="nav-icon">📜</span><span class="nav-label">Money History</span></a>
+    </nav>
+    <div class="sidebar-footer">MoneyMate v1.0 &nbsp;·&nbsp; All data local</div>
+  </aside>
+  <div id="sidebarOverlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div>
+          <div class="header-title">Money History</div>
+          <div class="header-subtitle">Complete financial transaction log</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-secondary" id="exportBtn">⬇️ Export CSV</button>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <div class="hist-summary-bar" id="histSummary"></div>
+
+      <!-- Filter card -->
+      <div class="hist-filter-card">
+        <div class="hist-filter-header">
+          <div class="hist-filter-title">🔍 Search &amp; Filter</div>
+          <button class="btn btn-secondary btn-sm" id="clearHistFilter">Clear All</button>
+        </div>
+        <div class="hist-filter-row1">
+          <div class="hist-search-wrap">
+            <span class="si">🔍</span>
+            <input type="text" class="form-input" id="histSearch" placeholder="Search description, category…" />
+          </div>
+          <select class="form-select" id="histType">
+            <option value="">All Types</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+            <option value="saving">Saving</option>
+          </select>
+        </div>
+        <div class="hist-filter-row2">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">Category</label>
+            <select class="form-select" id="histCat">
+              <option value="">All</option>
+              <option value="food">Food</option>
+              <option value="shopping">Shopping</option>
+              <option value="transport">Transport</option>
+              <option value="bills">Bills</option>
+              <option value="education">Education</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="health">Health</option>
+              <option value="travel">Travel</option>
+              <option value="salary">Salary</option>
+              <option value="business">Business</option>
+              <option value="investment">Investment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">From Date</label>
+            <input type="date" class="form-input" id="histFrom" />
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">To Date</label>
+            <input type="date" class="form-input" id="histTo" />
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label">Sort By</label>
+            <select class="form-select" id="histSort">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="amount-desc">Amount: High → Low</option>
+              <option value="amount-asc">Amount: Low → High</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><span class="card-title-icon">📜</span> Transaction History</div>
+          <span class="text-muted" id="histCount">0 records</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Method</th>
+                <th class="text-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="histTableBody"></tbody>
+          </table>
+        </div>
+        <div class="hist-pagination">
+          <span class="hist-page-info" id="pageInfo"></span>
+          <div class="hist-page-btns">
+            <button class="btn btn-secondary btn-sm" id="prevPage">← Prev</button>
+            <button class="btn btn-secondary btn-sm" id="nextPage">Next →</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script src="history.js"></script>
+</body>
+</html>

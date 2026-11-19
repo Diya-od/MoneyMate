@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyMate — Take Control of Your Money</title>
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="landing.css" />
+</head>
+<body>
+
+<!-- Animated background orbs -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- ── Navbar ── -->
+<nav class="land-nav">
+  <div class="nav-logo">
+    <div class="logo-badge">💰</div>
+    <span class="logo-name">MoneyMate</span>
+  </div>
+  <div class="nav-cta">
+    <a href="dashboard.html" class="btn-nav outline">Dashboard</a>
+    <a href="dashboard.html" class="btn-nav filled">Open App →</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill"><span class="dot"></span> Your Personal Finance Companion</div>
+    <h1 class="hero-title">
+      <span class="line1">Master Your</span>
+      <span class="line2">Money, Master</span>
+      <span class="line1">Your Life.</span>
+    </h1>
+    <p class="hero-sub">
+      MoneyMate gives you a complete view of your finances — track income, expenses,
+      savings goals, assets, and budgets all in one beautiful place.
+    </p>
+    <div class="hero-buttons">
+      <a href="dashboard.html" class="btn-hero-primary">🚀 Launch App Free</a>
+      <a href="#features"      class="btn-hero-secondary">👀 Explore Features</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-val" id="liveBalance">—</div>
+        <div class="hs-label">Your Balance</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-val" id="liveAssets">—</div>
+        <div class="hs-label">Total Assets</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-val" id="liveGoals">—</div>
+        <div class="hs-label">Savings Goals</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-val" id="liveNetWorth">—</div>
+        <div class="hs-label">Net Worth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── App Preview Mockup ── -->
+<section class="preview-section">
+  <div class="mockup-frame">
+    <div class="mockup-bar">
+      <div class="mockup-dots">
+        <span class="d1"></span><span class="d2"></span><span class="d3"></span>
+      </div>
+      <div class="mockup-url">💰 moneymate / dashboard</div>
+    </div>
+    <div class="mockup-body">
+      <div class="mock-sidebar">
+        <div class="mock-logo">
+          <div class="mock-logo-box">💰</div>
+          <div class="mock-logo-text">MoneyMate</div>
+        </div>
+        <div class="mock-nav-item active">🏠 Dashboard</div>
+        <div class="mock-nav-item">💰 Transactions</div>
+        <div class="mock-nav-item">💵 Savings</div>
+        <div class="mock-nav-item">🏦 Assets</div>
+        <div class="mock-nav-item">📊 Budget</div>
+        <div class="mock-nav-item">📜 History</div>
+      </div>
+      <div class="mock-main">
+        <div style="font-size:12px;color:var(--text3);margin-bottom:14px;font-weight:600">📊 Dashboard Overview</div>
+        <div class="mock-stat-row">
+          <div class="mock-stat">
+            <div class="ms-label">Balance</div>
+            <div class="ms-val ms-blue" id="mBalance">—</div>
+          </div>
+          <div class="mock-stat">
+            <div class="ms-label">Income</div>
+            <div class="ms-val ms-green" id="mIncome">—</div>
+          </div>
+          <div class="mock-stat">
+            <div class="ms-label">Expenses</div>
+            <div class="ms-val ms-red" id="mExpenses">—</div>
+          </div>
+        </div>
+        <div class="mock-chart-row">
+          <div class="mock-card">
+            <div class="mock-card-title">📉 Spending by Category</div>
+            <div id="mockBars"></div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-title">🕒 Recent Transactions</div>
+            <div id="mockTxs"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ticker ── -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ── Features ── -->
+<section class="land-section" id="features">
+  <div class="reveal">
+    <div class="section-label">✦ What you get</div>
+    <h2 class="section-title">Everything your wallet<br/>needs in one place</h2>
+    <p class="section-sub">Six powerful modules that connect seamlessly so every number stays in sync — always.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <div class="feat-icon" style="background:rgba(79,142,247,.12)">🏠</div>
+      <div class="feat-title">Smart Dashboard</div>
+      <div class="feat-desc">Auto-calculated Balance, Net Worth, and spending summaries pulled live from every module the moment you open it.</div>
+      <a href="dashboard.html" class="feat-link">Open Dashboard →</a>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon" style="background:rgba(34,197,94,.12)">💳</div>
+      <div class="feat-title">Transactions</div>
+      <div class="feat-desc">Log income, expenses, and savings with categories, payment methods, and date filters. Edit or delete anytime.</div>
+      <a href="transactions.html" class="feat-link">Track spending →</a>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon" style="background:rgba(6,182,212,.12)">🎯</div>
+      <div class="feat-title">Savings Goals</div>
+      <div class="feat-desc">Set targets for emergency funds, gadgets, travel, or anything. Watch the progress bar fill as you add money.</div>
+      <a href="savings.html" class="feat-link">Set a goal →</a>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon" style="background:rgba(245,158,11,.12)">🏦</div>
+      <div class="feat-title">Asset Tracker</div>
+      <div class="feat-desc">Track cash, gold, bank accounts, property, investments and more. Every asset feeds directly into your Net Worth.</div>
+      <a href="assets.html" class="feat-link">Add assets →</a>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon" style="background:rgba(168,85,247,.12)">📊</div>
+      <div class="feat-title">Monthly Budget</div>
+      <div class="feat-desc">Set limits per category. Get instant warnings when you're close to or past your limit — with color-coded bars.</div>
+      <a href="budget.html" class="feat-link">Set budget →</a>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon" style="background:rgba(239,68,68,.12)">📜</div>
+      <div class="feat-title">Money History</div>
+      <div class="feat-desc">Full paginated log of every transaction with search, date range, type, category filters and CSV export.</div>
+      <a href="history.html" class="feat-link">View history →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ── -->
+<section class="land-section">
+  <div class="reveal" style="text-align:center">
+    <div class="section-label" style="text-align:center">✦ How it works</div>
+    <h2 class="section-title" style="text-align:center">Up and running in seconds</h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 56px">No sign-up. No server. No complexity. Just open and go.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Open the App</div>
+      <div class="step-desc">Click "Launch App" — sample data loads automatically so you see a working example right away.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">Add Your Data</div>
+      <div class="step-desc">Replace sample entries with your own income, expenses, savings goals, and assets.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">Dashboard Updates</div>
+      <div class="step-desc">Every change instantly reflects on the Dashboard — Balance, Net Worth, Budget — all recalculated live.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <div class="step-title">Stay in Control</div>
+      <div class="step-desc">Your data is stored locally in your browser. Private, secure, and always available — even offline.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Privacy strip ── -->
+<div class="strip reveal">
+  <div class="strip-title">100% Private &nbsp;·&nbsp; No Sign-up &nbsp;·&nbsp; Works Offline &nbsp;·&nbsp; Free Forever</div>
+  <div class="strip-sub">All your financial data stays on your device using LocalStorage. Nothing leaves your browser.</div>
+</div>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-box reveal">
+    <span class="cta-emoji">💰</span>
+    <h2 class="cta-title">Ready to own your finances?</h2>
+    <p class="cta-sub">Start tracking your money in under 30 seconds. No account needed — your data lives right here on your device.</p>
+    <a href="dashboard.html" class="btn-cta">🚀 &nbsp; Open MoneyMate Now</a>
+    <div class="cta-note">Free forever &nbsp;·&nbsp; No ads &nbsp;·&nbsp; No tracking</div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="land-footer">
+  <div class="footer-logo">
+    <span>💰</span>
+    <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">MoneyMate</span>
+  </div>
+  <div class="footer-copy">© 2026 MoneyMate &nbsp;·&nbsp; All data stored locally</div>
+  <div class="footer-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="savings.html">Savings</a>
+    <a href="assets.html">Assets</a>
+    <a href="budget.html">Budget</a>
+    <a href="history.html">History</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
